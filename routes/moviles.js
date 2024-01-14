@@ -28,7 +28,10 @@ app.put('/', (req, res) => {
 })
 
 app.delete('/', (req, res) => {
-  Movil.findByIdAndDelete(req.body._id, )
+  Movil.findByIdAndDelete(req.body._id)
+  .then(data => res.status(200).json({msg: 'ok', response: data}))
+  .catch(error => res.status(500).json({msg: 'Error en base de datos.'}))
 })
 
 module.exports = app
+
